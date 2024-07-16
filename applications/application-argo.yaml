@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: base-k8s-setup
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/kiquetal/k8s-base-examples.git
+    targetRevision: HEAD
+    path: infraestructure
+    directory:
+      recurse: true
+  destination:
+    server: "https://kubernetes.default.svc"
